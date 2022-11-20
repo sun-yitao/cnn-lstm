@@ -12,8 +12,8 @@ class CNNLSTM(nn.Module):
         self.resnet = resnet18(pretrained=True)
         self.resnet.fc = nn.Sequential(nn.Linear(self.resnet.fc.in_features, 128))
         self.lstm = nn.LSTM(input_size=128, hidden_size=64, num_layers=3)
-        self.fc1 = nn.Linear(128, 64)
-        self.fc2 = nn.Linear(64, num_classes)
+        self.fc1 = nn.Linear(64, 32)
+        self.fc2 = nn.Linear(32, num_classes)
 
     def forward(self, x_3d):
         hidden = None
