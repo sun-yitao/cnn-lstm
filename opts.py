@@ -57,7 +57,7 @@ def parse_opts():
         '(cnnlstm | cnnlstm_attn |')
 	parser.add_argument(
         '--n_classes',
-        default=400,
+        default=3,
         type=int,
         help=
         'Number of classes (activitynet: 200, kinetics: 400 or 600, ucf101: 101, hmdb51: 51)'
