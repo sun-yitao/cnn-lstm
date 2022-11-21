@@ -28,6 +28,10 @@ for class_folder in image_dir.iterdir():
             "subset": "validation",
             "annotations": {"label": class_folder.name},
         }
+    for folder in video_folders:
+        n_frames = len(list(folder.glob("*.png")))
+        with open(folder / "n_frames", "w") as fp:
+            fp.write(str(n_frames))
 
 
 annotation = {"labels": labels, "database": database}
