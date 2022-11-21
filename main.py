@@ -25,7 +25,7 @@ from spatial_transforms import (
     RandomHorizontalFlip,
     ToTensor,
 )
-from temporal_transforms import LoopPadding, TemporalRandomCrop
+from temporal_transforms import LoopPadding, TemporalRandomCrop, TemporalCenterCrop
 from target_transforms import ClassLabel, VideoID
 from target_transforms import Compose as TargetCompose
 
@@ -63,7 +63,7 @@ def get_loaders(opt):
 
     # validation loader
     target_transform = ClassLabel()
-    temporal_transform = LoopPadding(12)
+    temporal_transform = TemporalCenterCrop(12)
     validation_data = get_validation_set(
         opt, spatial_transform, temporal_transform, target_transform
     )
