@@ -49,7 +49,10 @@ def get_loaders(opt):
             ToTensor(opt.norm_value),
         ]
     )
-    training_data = get_training_set(opt, spatial_transform, None, target_transform)
+    temporal_transform = TemporalRandomCrop(12)
+    training_data = get_training_set(
+        opt, spatial_transform, temporal_transform, target_transform
+    )
     train_loader = torch.utils.data.DataLoader(
         training_data,
         batch_size=opt.batch_size,
@@ -60,7 +63,10 @@ def get_loaders(opt):
 
     # validation loader
     target_transform = ClassLabel()
-    validation_data = get_validation_set(opt, spatial_transform, None, target_transform)
+    temporal_transform = LoopPadding(12)
+    validation_data = get_validation_set(
+        opt, spatial_transform, temporal_transform, target_transform
+    )
     val_loader = torch.utils.data.DataLoader(
         validation_data,
         batch_size=opt.batch_size,

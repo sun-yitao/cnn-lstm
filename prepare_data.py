@@ -4,7 +4,7 @@ import random
 
 data_dir = Path.cwd() / "data"
 image_dir = data_dir / "image_data"
-annotation_dir = data_dir / "annotation" / "ucf101_01_test.json"
+annotation_dir = data_dir / "annotation" / "ucf101_01.json"
 
 labels = ["noslip", "forward", "backward"]
 database = {}
